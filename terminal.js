@@ -24,7 +24,7 @@ var Terminal = (function () {
 	}
 	
 	var tryCommand = function (terminal, cmd, args) {
-		ga('send', 'event', 'TerminalCommand', cmd, args);
+		ga('send', 'event', 'TerminalCommand', cmd, args.join(' '));
 		if (cmd in self.commands) {
 			runCommand(terminal, cmd, args);
 		} else {
