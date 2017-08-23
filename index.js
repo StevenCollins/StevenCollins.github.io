@@ -59,7 +59,6 @@ commands.link = function (args) {
 
 commands.exit = function (args) {
     Terminal.exit();
-    console.log('[Process completed]');
 }
 
 Terminal.init('screen', {

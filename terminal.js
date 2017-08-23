@@ -25,11 +25,17 @@ var Terminal = (function () {
     
     var tryCommand = function (terminal, cmd, args) {
         ga('send', 'event', 'TerminalCommand', cmd, args.join(' '));
-        if (cmd in self.commands) {
+        if (cmd === "clear") {
+            clearCommand(terminal);
+        } else if (cmd in self.commands) {
             runCommand(terminal, cmd, args);
         } else {
             commandNotFound(terminal, cmd);
         }
+    }
+
+    var clearCommand = function (terminal) {
+        terminal.innerHTML = '';
     }
 
     var runCommand = function (terminal, cmd, args) {
