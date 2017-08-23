@@ -6,8 +6,21 @@ html, body {
     margin: 0;
 }
 
+.terminal .terminal-input {
+    height: 1em;
+    min-width: 1em;
+    outline: none;
+    border: none;
+    display: inline-block;
+}
+
+.terminal p {
+    margin: 0.5em 0;
+    padding: 0;
+}
+
 #screen {
-    margin: 10px 10px;
+    margin: 0 10px;
     width: auto;
     height: auto;
     border: none;

@@ -1,5 +1,4 @@
-var commands = {}
-var state = {}
+var commands = {};
 
 commands.help = function() {
     return 'I\'m working on it!';
