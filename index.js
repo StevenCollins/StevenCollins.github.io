@@ -57,6 +57,18 @@ commands.link = function (args) {
     return ret;
 }
 
+commands.online = function () {
+    /*var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open("GET", './online.html', false); // false for synchronous request
+    xmlHttp.send(null);
+    return xmlHttp.responseText;*/
+    fetch('online.html').then(function (response) {
+        return response.text();
+    }).then(function (res) {
+        commands.echo(['test', res]);
+    });
+}
+
 commands.exit = function (args) {
     Terminal.exit();
 }
@@ -66,3 +78,16 @@ Terminal.init('screen', {
     prompt: '\\u@\\H $ ',
     intro: '<p>Welcome to the website of Steven Collins<br>Please use the terminal to explore</p>'
 });
+
+// Load our service worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js').then(function (registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+        });
+    });
+}
