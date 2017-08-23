@@ -1,38 +1,38 @@
 html, body {
-	font-family: 'Share Tech Mono', monospace;
-	background-color: #000;
-	color: #0f0;
-	height: 100%;
-	margin: 0;
+    font-family: 'Share Tech Mono', monospace;
+    background-color: #000;
+    color: #0f0;
+    height: 100%;
+    margin: 0;
 }
 
 #screen {
-	margin: 10px 10px;
-	width: auto;
-	height: auto;
-	border: none;
-	overflow: auto;
-	word-break: break-all;
+    margin: 10px 10px;
+    width: auto;
+    height: auto;
+    border: none;
+    overflow: auto;
+    word-break: break-all;
 }
 @media (min-width: 990px) and (min-height: 730px) {
-	#screen {
-		margin: auto;
-		width: 800px;
-		height: 600px;
-		border: #444 solid;
-		border-width: 60px 80px;
-		border-radius: 10px;
-	}
-	#page {
-		display: flex;
-		align-content: center;
-		height: 100%;
-	}
+    #screen {
+        margin: auto;
+        width: 800px;
+        height: 600px;
+        border: #444 solid;
+        border-width: 60px 80px;
+        border-radius: 10px;
+    }
+    #page {
+        display: flex;
+        align-content: center;
+        height: 100%;
+    }
 
-	.terminal {
-		display: flex;
-		height: 100%;
-		background-color: #000800;
-		padding: 0 1em;
-	}
+    .terminal {
+        display: flex;
+        height: 100%;
+        background-color: #000800;
+        padding: 0 1em;
+    }
 }
