@@ -6,7 +6,17 @@
         <meta name="author" content="Steven Collins">
         <meta name="description" content="Info about Steven Collins">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+        <meta name="theme-color" content="#000800">
         <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="manifest" href="manifest.json">
+        <!-- Crazy favicon support -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicons/favicon-16x16.png">
+        <link rel="mask-icon" href="/resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
+        <link rel="shortcut icon" href="/resources/favicons/favicon.ico">
+        <meta name="msapplication-config" content="/resources/favicons/browserconfig.xml">
+        <!-- End Crazy favicon support -->
         <script src="terminal.js"></script>
         <!-- Google Analytics -->
         <script>
@@ -21,7 +31,9 @@
     </head>
     <body>
         <div id="page">
-            <div id="screen"></div>
+            <div id="screen">
+                <div class="terminal no-js">Welcome to the website of Steven Collins<br>Unfortunately it doesn't look like you have JavaScript running<br>JavaScript is required to view this page</div>
+            </div>
         </div>
     </body>
     <script src="index.js"></script>
