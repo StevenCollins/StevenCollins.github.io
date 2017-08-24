@@ -4,7 +4,6 @@ var urlsToCache = [
   '/index.css',
   '/index.js',
   '/terminal.js',
-  'https://fonts.googleapis.com/css?family=Share+Tech+Mono',
   '/offline.html'
 ];
 
@@ -18,18 +17,21 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('fetch', function(event) {
-    console.log('Fetch event for ', event.request.url);
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
-                console.log('Found ', event.request.url, ' in cache');                    
                 return response;
             }
-            console.log('Network request for ', event.request.url);                
-            return fetch(event.request);
+            //Cache fonts
+            return fetch(event.request.clone()).then(function(response) {
+                if (response.status < 400 && response.url.match(/fonts\//i)) {
+                    cache.put(event.request, response.clone());
+                }
+                return response;
+            });
         }).catch(function(error) {
-            console.log('Error, ', error);
-            return caches.match('./offline.html');
+            //We're probably offline and looking for uncached pages
+            //Do nothing
         })
     );
 });

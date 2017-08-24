@@ -58,15 +58,21 @@ commands.link = function (args) {
 }
 
 commands.online = function () {
-    /*var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open("GET", './online.html', false); // false for synchronous request
-    xmlHttp.send(null);
-    return xmlHttp.responseText;*/
+    var uuid = createUUID();
     fetch('online.html').then(function (response) {
         return response.text();
-    }).then(function (res) {
-        commands.echo(['test', res]);
+    }).then(function (text) {
+        var node = document.getElementById(uuid);
+        node.innerText = text;
+        node.removeAttribute('id');
+    }).catch(function(error) {
+        //We're probably offline
+        console.log(error);
+        var node = document.getElementById(uuid);
+        node.innerText = 'An error occurred. You\'re probably offline.';
+        node.removeAttribute('id');
     });
+    return '<p id="' + uuid + '">Fetching response...</p>';
 }
 
 commands.exit = function (args) {
@@ -91,3 +97,6 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+
+//Create UUIDs - https://gist.github.com/jed/982883
+function createUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,createUUID)}
