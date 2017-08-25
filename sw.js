@@ -19,19 +19,33 @@ self.addEventListener('install', function(event) {
 self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
+            //If there's a cached response, return it
             if (response) {
                 return response;
             }
-            //Cache fonts
-            return fetch(event.request.clone()).then(function(response) {
-                if (response.status < 400 && response.url.match(/fonts\//i)) {
-                    cache.put(event.request, response.clone());
-                }
-                return response;
-            });
+            //Otherwise, fetch a good response
+            var fetchRequest = event.request.clone();
+            return fetch(fetchRequest)
+                .then(function(response) {
+                    //If it's an odd response, just return it
+                    if (!response || response.status !== 200 || response.type !== 'basic') {
+                        return response;
+                    }
+                    //If we received a font, cache it
+                    if (response.url.match(/fonts\//i)) {
+                        var responseToCache = response.clone();
+                        caches.open(CACHE_NAME)
+                            .then(function(cache) {
+                                cache.put(event.request, responseToCache);
+                            });
+                    }
+                    //Otherwise, just return the response
+                    return response;
+                });
         }).catch(function(error) {
             //We're probably offline and looking for uncached pages
             //Do nothing
+            console.log('sw error: ' + error);
         })
     );
 });
