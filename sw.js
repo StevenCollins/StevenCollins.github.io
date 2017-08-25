@@ -1,9 +1,9 @@
 var CACHE_NAME = 'terminal-cache-v1';
 var urlsToCache = [
   '/',
-  '/index.css',
-  '/index.js',
-  '/terminal.js',
+  '/resources/css/default.css',
+  '/resources/js/index.js',
+  '/resources/js/terminal.js',
   '/offline.html'
 ];
 
@@ -35,4 +35,3 @@ self.addEventListener('fetch', function(event) {
         })
     );
 });
-  

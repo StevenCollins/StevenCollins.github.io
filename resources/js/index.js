@@ -30,7 +30,7 @@ commands.open = function (args) {
     if (args.length > 1) {
         var item = args[1].toLowerCase();
         if (item === 'resume') {
-            window.open("./resources/Steven Collins' Resume.pdf");
+            window.open("/resources/files/Steven Collins' Resume.pdf");
             ret = 'Opening resume...';
         } else if (item === 'linkedin') {
             window.open('https://www.linkedin.com/in/steven-e-collins');
@@ -47,7 +47,7 @@ commands.link = function (args) {
     if (args.length > 1) {
         var item = args[1].toLowerCase();
         if (item === 'resume') {
-            ret = '<a href="./resources/Steven Collins\' Resume.pdf" target="_blank">Click here to open <i>resume</i></a>';
+            ret = '<a href="/resources/files/Steven Collins\' Resume.pdf" target="_blank">Click here to open <i>resume</i></a>';
         } else if (item === 'linkedin') {
             ret = '<a href="https://www.linkedin.com/in/steven-e-collins" target="_blank">Click here to open <i>LinkedIn</i></a>';
         }
