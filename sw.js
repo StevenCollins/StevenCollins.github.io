@@ -1,9 +1,11 @@
 var CACHE_NAME = 'terminal-cache-v1';
 var urlsToCache = [
   '/',
+  '/gui.html',
   '/resources/css/default.css',
   '/resources/js/index.js',
   '/resources/js/terminal.js',
+  '/resources/js/commands.js',
   '/offline.html'
 ];
 

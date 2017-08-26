@@ -8,12 +8,53 @@
          url('/resources/fonts/share-tech-mono-v6-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
   }
   
-  html, body {
+html, body {
     font-family: 'Share Tech Mono', monospace;
     background-color: #000;
     color: #0f0;
     height: 100%;
     margin: 0;
+}
+
+a:link, a:visited {
+    color: #0f0;
+}
+
+#footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+#page {
+    display: flex;
+    align-content: center;
+    height: 100%;
+}
+
+#screen {
+    width: auto;
+    height: auto;
+    border: none;
+    overflow: auto;
+    word-break: break-word;
+}
+@media (min-width: 990px) and (min-height: 730px) {
+    #screen {
+        margin: auto;
+        width: 800px;
+        height: 600px;
+        background-color: #000800;
+        border: #444 solid;
+        border-width: 60px 80px;
+        border-radius: 10px;
+    }
+}
+
+.terminal {
+    display: inline-block;
+    height: 100%;
+    padding: 0 1em;
 }
 
 .terminal .terminal-input {
@@ -29,33 +70,12 @@
     padding: 0;
 }
 
-#screen {
-    margin: 0 10px;
-    width: auto;
-    height: auto;
-    border: none;
-    overflow: auto;
-    word-break: break-all;
+.terminal-bottom {
+    position: relative;
+    bottom: 24px;
+    height: 0;
+    padding: 0 1em;
 }
-@media (min-width: 990px) and (min-height: 730px) {
-    #screen {
-        margin: auto;
-        width: 800px;
-        height: 600px;
-        border: #444 solid;
-        border-width: 60px 80px;
-        border-radius: 10px;
-    }
-    #page {
-        display: flex;
-        align-content: center;
-        height: 100%;
-    }
-
-    .terminal {
-        display: flex;
-        height: 100%;
-        background-color: #000800;
-        padding: 0 1em;
-    }
+.terminal-bottom p {
+    margin: 0;
 }
