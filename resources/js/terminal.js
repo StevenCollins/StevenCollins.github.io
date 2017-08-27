@@ -39,7 +39,7 @@ var Terminal = (function () {
     }
 
     var runCommand = function (terminal, cmd, args) {
-        terminal.innerHTML += '<p>' + (self.commands[cmd](args)) + '</p>';
+        terminal.innerHTML += self.commands[cmd](args);
     }
 
     var commandNotFound = function (terminal, cmd) {
