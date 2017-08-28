@@ -4,6 +4,8 @@ var urlsToCache = [
   '/gui.html',
   '/help.html',
   '/resources/css/default.css',
+  '/resources/info/AboutMe.html',
+  '/resources/info/Skills.html',
   '/resources/js/index.js',
   '/resources/js/terminal.js',
   '/resources/js/commands.js',

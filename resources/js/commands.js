@@ -56,6 +56,41 @@ commands.link = function (args) {
     return ret;
 }
 
+commands.ls = function () {
+    return '<p>AboutMe.html' +
+        '<br>Skills.html' +
+        //'<br>Education.html' +
+        //'<br>Experience.html' +
+        //'<br>Projects.html' +
+        //'<br>Associations.html' +
+    '</p>';
+}
+
+commands.less = function (args) {
+    return filePrinter(args);
+}
+commands.more = function (args) {
+    return filePrinter(args);
+}
+commands.cat = function (args) {
+    return filePrinter(args);
+}
+commands.view = function (args) {
+    return filePrinter(args);
+}
+commands.tail = function (args) {
+    return filePrinter(args);
+}
+function filePrinter(args) {
+    var ret = '';
+    if (args.length > 1) {
+        ret = delayedCommand('/resources/info/' + args[1]);
+    } else {
+        ret = "usage: " + args[0] + " &lt;filename&gt;<br>Displays the contents of the specified file";
+    }
+    return ret;
+}
+
 commands.online = function () {
     return delayedCommand('online.html');
 }
@@ -63,3 +98,29 @@ commands.online = function () {
 commands.exit = function (args) {
     Terminal.exit();
 }
+
+//Utility to handle delayed commands
+var delayedCommand = function (url) {
+    var uuid = createUUID();
+    fetch(url).then(function (response) {
+        return response.text();
+    }).then(function (text) {
+        var node = document.getElementById(uuid);
+        if (text != '') {
+            node.innerHTML = text;
+        } else {
+            node.innerHTML = 'error retrieving data';
+        }
+        node.removeAttribute('id');
+    }).catch(function(error) {
+        //We're probably offline
+        console.log(error);
+        var node = document.getElementById(uuid);
+        node.innerHTML = 'An error occurred. You\'re probably offline.';
+        node.removeAttribute('id');
+    });
+    return '<p id="' + uuid + '">Fetching response...</p>';
+};
+
+//Create UUIDs - https://gist.github.com/jed/982883
+function createUUID(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,createUUID)}
