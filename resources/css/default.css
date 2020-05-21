@@ -39,15 +39,15 @@ a:link, a:visited {
     overflow: auto;
     word-break: break-word;
 }
-@media (min-width: 60em) and (min-height: 47.5em) {
+@media (min-width: 990px) and (min-height: 730px) {
     #screen {
         margin: auto;
-        width: 50em;
-        height: 37.5em;
+        width: 800px;
+        height: 600px;
         background-color: #000800;
         border: #444 solid;
-        border-width: 3.75em 5em;
-        border-radius: 6.25em;
+        border-width: 60px 80px;
+        border-radius: 10px;
     }
 }
 
@@ -72,7 +72,7 @@ a:link, a:visited {
 
 .terminal-bottom {
     position: relative;
-    bottom: 1.5em;
+    bottom: 24px;
     height: 0;
     padding: 0 1em;
 }
